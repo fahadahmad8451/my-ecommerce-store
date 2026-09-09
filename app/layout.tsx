@@ -12,7 +12,10 @@ import { getSiteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "DESKAVYN — Workspace, Reconsidered",
-  description: "Premium desk essentials and interactive workspace objects."
+  description: "Premium desk essentials and interactive workspace objects.",
+  verification: {
+    google: "NeFOTf0d3HvDUpbdl_2Wzmr-XS6vBM7bz3oqgCYO43U"
+  }
 };
 
 export default async function RootLayout({children}:{children:React.ReactNode}) {
