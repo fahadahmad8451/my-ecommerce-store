@@ -1,0 +1,85 @@
+{
+  "contactEmail": "hello@deskavyn.com",
+  "pages": {
+    "about": {
+      "eyebrow": "ABOUT DESKAVYN",
+      "title": "Built for a more considered workspace.",
+      "intro": "DESKAVYN creates purposeful objects for the rituals that shape focused work.",
+      "sections": [
+        { "heading": "Our story", "body": "We believe the desk is more than furniture. It is a daily environment for attention, ideas and momentum, so every DESKAVYN object begins with a practical problem worth solving." },
+        { "heading": "Our mission", "body": "To make workspaces feel calmer, clearer and more personal through durable design, thoughtful materials and useful details." },
+        { "heading": "Our values", "body": "Clarity over clutter. Longevity over novelty. Human rituals over empty decoration. We design each product to earn its place over time." }
+      ]
+    },
+    "privacy-policy": {
+      "eyebrow": "LEGAL",
+      "title": "Privacy Policy",
+      "intro": "This policy explains how DESKAVYN handles information shared through this website.",
+      "sections": [
+        { "heading": "Information we collect", "body": "We collect the information you provide when you contact us, subscribe to updates, place an order or otherwise interact with our services." },
+        { "heading": "How we use information", "body": "We use information to provide services, respond to requests, improve the store and send communications where you have chosen to receive them." },
+        { "heading": "Your choices", "body": "You can request access, correction or deletion of your personal information, subject to applicable legal requirements." }
+      ]
+    },
+    "terms": {
+      "eyebrow": "LEGAL",
+      "title": "Terms of Service",
+      "intro": "These terms govern use of the DESKAVYN website and purchases made through it.",
+      "sections": [
+        { "heading": "Use of this website", "body": "Use this website lawfully and do not interfere with its operation, security or other visitors' use of it." },
+        { "heading": "Orders and availability", "body": "Product availability, pricing and delivery estimates may change. We may correct errors before accepting an order where permitted by law." },
+        { "heading": "Contact", "body": "For questions about these terms, contact DESKAVYN using the contact page." }
+      ]
+    },
+    "affiliate": {
+      "eyebrow": "PARTNER WITH DESKAVYN",
+      "title": "Share work worth making space for.",
+      "intro": "Our affiliate program is for creators and communities who value thoughtful workspaces.",
+      "sections": [
+        { "heading": "Program benefits", "body": "Approved partners receive a unique referral link, product updates and access to launches selected for their audience." },
+        { "heading": "How it works", "body": "Apply with a short introduction, tell us about your audience, and we will review the fit before sending program details." }
+      ]
+    },
+    "shipping-policy": {
+      "eyebrow": "SUPPORT CENTER",
+      "title": "Shipping Policy",
+      "intro": "Clear shipping information before your order is placed.",
+      "sections": [
+        { "heading": "Processing", "body": "Orders are prepared before dispatch. Processing and dispatch estimates are confirmed during checkout and may vary by product availability." },
+        { "heading": "Delivery", "body": "Delivery times depend on destination, carrier service and customs processing where applicable. Tracking details are sent once an order ships." },
+        { "heading": "International orders", "body": "International customers may be responsible for local duties, taxes or customs fees assessed by their destination country." }
+      ]
+    },
+    "returns": {
+      "eyebrow": "SUPPORT CENTER",
+      "title": "Exchanges & Returns",
+      "intro": "If something is not right, start with a clear return request.",
+      "sections": [
+        { "heading": "Eligibility", "body": "Return eligibility, time windows and product conditions are confirmed with your order details and applicable local consumer protections." },
+        { "heading": "How to request a return", "body": "Contact our support team with your order number, the item you need help with and a short description of the issue." }
+      ]
+    },
+    "refund-policy": {
+      "eyebrow": "SUPPORT CENTER",
+      "title": "Refund Policy",
+      "intro": "Refunds are handled after a return or issue has been assessed against the applicable policy.",
+      "sections": [
+        { "heading": "Refund review", "body": "Once we receive and inspect an eligible return, we will confirm whether a refund is approved and communicate the next step." },
+        { "heading": "Timing", "body": "Approved refunds are issued to the original payment method. Bank or payment-provider processing times can vary." }
+      ]
+    }
+  },
+  "blogs": [
+    {
+      "slug": "designing-for-deeper-focus",
+      "title": "Designing for deeper focus",
+      "excerpt": "A few practical principles for making a desk feel less distracting and more intentional.",
+      "publishedAt": "2026-09-01",
+      "readTime": "4 min read",
+      "body": [
+        { "heading": "Reduce decisions", "body": "A useful workspace removes small points of friction. Keep frequently used tools close, and give everything else a deliberate home." },
+        { "heading": "Choose fewer, better objects", "body": "The best desk objects support a task without constantly demanding attention. Material, proportion and placement all matter." }
+      ]
+    }
+  ]
+}

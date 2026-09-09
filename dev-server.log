@@ -1,0 +1,11 @@
+
+> deskavyn-v3@1.0.0 dev
+> next dev
+
+ ⚠ Port 3000 is in use by an unknown process, using available port 3002 instead.
+   ▲ Next.js 15.5.25
+   - Local:        http://localhost:3002
+   - Network:      http://192.168.18.2:3002
+
+ ✓ Starting...
+ ✓ Ready in 12.8s

@@ -1,0 +1,2 @@
+import { InventoryAdmin } from "@/components/admin/InventoryAdmin";
+export default function InventoryPage() { return <main className="page-top section-pad admin-products-page"><span className="eyebrow">SHOPIFY COMMERCE</span><h1 className="display-xl">Inventory.</h1><p className="lede page-intro">Real stock totals from Shopify. Low stock means 1–5 units; inventory changes remain in Shopify as the source of truth.</p><InventoryAdmin/></main>; }

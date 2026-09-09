@@ -1,0 +1,2 @@
+import { ContentFooterAdmin } from "@/components/admin/ContentFooterAdmin";
+export default function AdminContentPage() { return <main className="page-top section-pad admin-products-page"><span className="eyebrow">WEBSITE CONTENT</span><h1 className="display-xl">Content & footer.</h1><p className="lede page-intro">Manage public pages, contact information, newsletter copy and social links in one place.</p><ContentFooterAdmin/></main>; }

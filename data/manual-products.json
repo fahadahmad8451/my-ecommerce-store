@@ -1,0 +1,24 @@
+[
+  {
+    "id": "manual-1788730683225",
+    "slug": "laptop",
+    "name": "Laptop",
+    "category": "Essentials",
+    "price": 20,
+    "description": "A DESKAVYN workspace object.",
+    "materials": [
+      "Aluminum"
+    ],
+    "colors": [
+      "Graphite"
+    ],
+    "stock": 10,
+    "featured": false,
+    "bestseller": true,
+    "images": [
+      "/images/images.jfif"
+    ],
+    "rating": 4.9,
+    "reviewCount": 0
+  }
+]

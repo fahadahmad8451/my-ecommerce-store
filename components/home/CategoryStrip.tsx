@@ -1,0 +1,2 @@
+import Link from "next/link";
+export function CategoryStrip({ categories }: { categories: string[] }) { return <nav className="home-category-strip" aria-label="Shop by category">{categories.map((category, index) => <Link href={`/shop?category=${encodeURIComponent(category)}`} key={category}><span>{String(index + 1).padStart(2, "0")}</span><strong>{category}</strong><small>Shop ↗</small></Link>)}</nav>; }

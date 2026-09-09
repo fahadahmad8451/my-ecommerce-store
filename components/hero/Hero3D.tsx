@@ -1,0 +1,11 @@
+"use client";
+import Link from "next/link";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { ContactShadows, Environment, Float } from "@react-three/drei";
+import { useRef } from "react";
+import * as THREE from "three";
+import type { SiteConfig } from "@/lib/site-config";
+
+function ProductObject() { const group = useRef<THREE.Group>(null); useFrame(state => { if (!group.current) return; group.current.rotation.y = THREE.MathUtils.lerp(group.current.rotation.y, state.pointer.x * .28 - .18, .055); group.current.rotation.x = THREE.MathUtils.lerp(group.current.rotation.x, -state.pointer.y * .13, .055); }); return <group ref={group} rotation={[.02,-.18,0]} position={[.2,-.28,0]}><Float speed={1.15} rotationIntensity={.1} floatIntensity={.2}><mesh scale={[3.6,.18,2.25]} rotation={[-.1,0,0]} castShadow><boxGeometry args={[1,1,1]}/><meshStandardMaterial color="#1e2633" metalness={.82} roughness={.22}/></mesh><mesh position={[.58,.55,0]} scale={[2.25,1.35,.09]} rotation={[-.03,-.1,0]} castShadow><boxGeometry args={[1,1,1]}/><meshStandardMaterial color="#070b11" metalness={.7} roughness={.18}/></mesh></Float><ContactShadows position={[0,-.52,0]} opacity={.3} scale={7} blur={2.2} far={5}/></group>; }
+
+export function Hero3D({ config }: { config: SiteConfig }) { return <section className="hero"><div className="hero-copy"><div className="kicker-line"><span className="eyebrow">{config.hero.eyebrow}</span></div><h1>{config.hero.line1} <em>{config.hero.line2}</em></h1><p className="hero-sub">{config.hero.description}</p><div className="hero-cta"><Link className="btn-primary" href="/shop">{config.hero.primaryButton}</Link><a className="btn-ghost" href="#story">{config.hero.secondaryButton}</a></div><div className="hero-trust-row"><span>Curated workspace essentials</span><span>Secure Shopify checkout</span><span>Returns policy available</span></div></div><div className="hero-canvas-wrap"><Canvas className="hero-canvas" camera={{position:[0,.8,6.8],fov:36}} dpr={[1,1.5]}><ambientLight intensity={.8}/><directionalLight position={[4,6,5]} intensity={2.8} color="#dbe4ff"/><pointLight position={[-3,2,2]} intensity={4} color={config.theme.accent}/><ProductObject/><Environment preset="city"/></Canvas></div></section>; }
