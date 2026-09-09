@@ -9,7 +9,7 @@ import { ProductModelViewer } from "@/components/three/ProductModelViewer";
 import { useWishlist } from "@/components/wishlist/WishlistProvider";
 
 export function ProductDetail({ product }: { product: Product }) {
-  const { addItem } = useCart();
+  const { addItem, buyNow } = useCart();
   const { has, toggle } = useWishlist();
   const initialSelections = Object.fromEntries((product.variants?.[0]?.selectedOptions || []).map(option => [option.name, option.value]));
   const [selectedOptions, setSelectedOptions] = useState<Record<string, string>>(initialSelections);
@@ -38,6 +38,12 @@ export function ProductDetail({ product }: { product: Product }) {
     activeProduct.compareAtPrice && activeProduct.compareAtPrice > activeProduct.price
       ? Math.round((1 - activeProduct.price / activeProduct.compareAtPrice) * 100)
       : 0;
+
+  async function handleBuyNow() {
+    const result = await buyNow(activeProduct, quantity);
+    if (result.checkoutUrl) { window.location.assign(result.checkoutUrl); return; }
+    window.alert(result.error || "Checkout could not be started.");
+  }
 
   return (
     <>
@@ -117,7 +123,7 @@ export function ProductDetail({ product }: { product: Product }) {
           <button
             className="buy-now-btn"
             disabled={activeProduct.stock <= 0 || (variantOptionGroups.length > 0 && !selectedVariant)}
-            onClick={() => addItem(activeProduct, quantity, selectedOptions.Color)}
+            onClick={handleBuyNow}
           >
             Buy Now
           </button>

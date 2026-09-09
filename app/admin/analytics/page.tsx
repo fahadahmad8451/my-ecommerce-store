@@ -1,0 +1,2 @@
+import { AnalyticsDashboard } from "@/components/admin/AnalyticsDashboard";
+export default function AnalyticsPage() { return <main className="page-top section-pad admin-products-page"><span className="eyebrow">SHOPIFY COMMERCE</span><h1 className="display-xl">Analytics.</h1><p className="lede page-intro">Actual order, revenue and product performance from Shopify—not decorative dashboard figures.</p><AnalyticsDashboard/></main>; }

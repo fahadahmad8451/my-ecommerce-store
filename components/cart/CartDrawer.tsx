@@ -50,12 +50,12 @@ export function CartDrawer() {
                 <strong>{item.name}</strong>
                 {item.selectedColor && <div className="cart-muted">{item.selectedColor}</div>}
                 <div className="qty-controls">
-                  <button onClick={() => updateQuantity(item.id, item.quantity - 1)}>−</button>
+                  <button onClick={() => updateQuantity(item.lineKey, item.quantity - 1)}>−</button>
                   <span>{item.quantity}</span>
-                  <button onClick={() => updateQuantity(item.id, item.quantity + 1)}>+</button>
+                  <button onClick={() => updateQuantity(item.lineKey, item.quantity + 1)}>+</button>
                 </div>
               </div>
-              <button className="icon-btn" onClick={() => removeItem(item.id)} aria-label={`Remove ${item.name}`}>×</button>
+              <button className="icon-btn" onClick={() => removeItem(item.lineKey)} aria-label={`Remove ${item.name}`}>×</button>
             </div>
           ))}
         </div>

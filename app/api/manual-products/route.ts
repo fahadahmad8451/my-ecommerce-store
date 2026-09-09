@@ -3,9 +3,12 @@ import {
   addManualProduct,
   deleteManualProduct,
   getManualProducts,
+  getTrashedManualProducts,
+  restoreManualProduct,
   updateManualProduct
 } from "@/lib/manual-products";
 import type { Product, ProductPlacement, ProductStatus } from "@/lib/products";
+import { writeAuditEntry } from "@/lib/audit-log";
 
 export const dynamic = "force-dynamic";
 
@@ -18,8 +21,8 @@ function arrayFrom(value: unknown, fallback: string[]) {
   return parsed.length ? parsed : fallback;
 }
 
-export async function GET() {
-  return NextResponse.json(await getManualProducts());
+export async function GET(request: Request) {
+  return NextResponse.json(new URL(request.url).searchParams.get("trash") === "1" ? await getTrashedManualProducts() : await getManualProducts());
 }
 
 export async function POST(request: Request) {
@@ -81,6 +84,7 @@ export async function POST(request: Request) {
   };
 
   await addManualProduct(product);
+  await writeAuditEntry({ action: "product.created", target: product.id, detail: product.name });
   return NextResponse.json(product, { status: 201 });
 }
 
@@ -93,6 +97,7 @@ export async function DELETE(request: Request) {
   }
 
   const deleted = await deleteManualProduct(id);
+  if (deleted) await writeAuditEntry({ action: "product.deleted", target: id });
   return NextResponse.json({ deleted });
 }
 
@@ -107,5 +112,8 @@ export async function PUT(request: Request) {
   if (!current) return NextResponse.json({ error: "Product not found." }, { status: 404 });
   const product: Product = { ...current, ...body, id, name, slug, price, stock: Math.max(0, Number(body.stock ?? current.stock)), images: arrayFrom(body.images, current.images), materials: arrayFrom(body.materials, current.materials), colors: arrayFrom(body.colors, current.colors), placements: { ...current.placements, ...body.placements }, status: (["draft", "active", "archived"].includes(String(body.status)) ? body.status : current.status) as ProductStatus };
   const updated = await updateManualProduct(id, product);
+  await writeAuditEntry({ action: "product.updated", target: id, detail: `${product.name} · ${product.price}` });
   return NextResponse.json(updated);
 }
+
+export async function PATCH(request: Request) { const { id } = await request.json() as { id?: string }; if (!id) return NextResponse.json({ error: "Product id required." }, { status: 400 }); const product = await restoreManualProduct(id); if (!product) return NextResponse.json({ error: "Product could not be restored." }, { status: 404 }); await writeAuditEntry({ action: "product.restored", target: product.id, detail: product.name }); return NextResponse.json(product); }

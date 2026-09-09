@@ -3,6 +3,7 @@ import path from "node:path";
 import type { Product } from "@/lib/products";
 
 const filePath = path.join(process.cwd(), "data", "manual-products.json");
+const trashPath = path.join(process.cwd(), "data", "manual-products-trash.json");
 
 async function ensureFile() {
   try {
@@ -39,10 +40,15 @@ export async function addManualProduct(product: Product) {
 
 export async function deleteManualProduct(id: string) {
   const products = await getManualProducts();
+  const deletedProduct = products.find((product) => product.id === id);
   const next = products.filter((product) => product.id !== id);
   await saveManualProducts(next);
-  return products.length !== next.length;
+  if (deletedProduct) { const trash = await getTrashedManualProducts(); trash.unshift(deletedProduct); await fs.writeFile(trashPath, `${JSON.stringify(trash, null, 2)}\n`, "utf8"); }
+  return Boolean(deletedProduct);
 }
+
+export async function getTrashedManualProducts(): Promise<Product[]> { try { const parsed = JSON.parse(await fs.readFile(trashPath, "utf8")); return Array.isArray(parsed) ? parsed : []; } catch { return []; } }
+export async function restoreManualProduct(id: string) { const trash = await getTrashedManualProducts(); const product = trash.find(item => item.id === id); if (!product) return null; const products = await getManualProducts(); if (products.some(item => item.id === id)) return null; await saveManualProducts([product, ...products]); await fs.writeFile(trashPath, `${JSON.stringify(trash.filter(item => item.id !== id), null, 2)}\n`, "utf8"); return product; }
 
 export async function updateManualProduct(id: string, product: Product) {
   const products = await getManualProducts();

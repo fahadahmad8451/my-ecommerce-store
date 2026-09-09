@@ -1,0 +1,2 @@
+import { NewsletterSubscribers } from "@/components/admin/NewsletterSubscribers";
+export default function NewsletterAdminPage() { return <main className="page-top section-pad admin-products-page"><span className="eyebrow">MARKETING</span><h1 className="display-xl">Newsletter.</h1><p className="lede page-intro">Real storefront signups, with duplicate email addresses consolidated automatically.</p><NewsletterSubscribers/></main>; }
